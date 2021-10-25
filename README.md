@@ -2,14 +2,14 @@
 
 Example implementation for [cryto.com indexing](https://github.com/crypto-com/chain-indexing)
 
-## 2. How to Run
+## How to Run
 
-### 2.1 Prerequisite
+### 1 Prerequisite
 
 - Crypto.com Chain full node
 - Postgres Database
 
-### 2.2 Configuration file
+### 2 Configuration file
 
 A sample configuration is available under `config/config.sample.toml`.
 
@@ -20,7 +20,7 @@ Note: Postgres database password is not available in `config.toml` nor command o
 #### Reminder On Connecting Mainnet
 
 There is a rate limiter on our public nodes. If you hit the rate limit, you may want to run your own nodes.
-### 2.3 Postgres Database
+### 3 Postgres Database
 
 You can have your Postgres setup locally or remotely.
 
@@ -42,7 +42,7 @@ This will start the following docker instances on your local network when you us
 | Postgres | 5432 | postgres | postgres | Database Name = postgres; SSL = true | ./pgdata-dev |
 | PgAdmin | 8080 | pgadmin@localhost | pgadmin | N/A | N/A |
 
-### 2.4 Execute Database Migration
+### 4 Execute Database Migration
 
 for DB_PASSWORD, never use common word such as "postgres" , "admin", "password", choose at least 16 characters including number, special character, capital letters even in testing environment.
 if you don't use strong password, pgmigrate will stop further processing
@@ -72,7 +72,7 @@ which migrate
 ./pgmigrate.sh -- -verbose up
 ```
 
-### 2.5 Run the Service
+### 5 Run the Service
 
 #### Docker
 
