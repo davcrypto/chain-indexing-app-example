@@ -1,4 +1,4 @@
-module chain-indexing-app-example
+module github.com/davcrypto/chain-indexing-app-example
 
 go 1.17
 
