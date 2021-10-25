@@ -1,4 +1,4 @@
-module indexer
+module chain-indexing-app-example
 
 go 1.17
 

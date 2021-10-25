@@ -3,7 +3,6 @@ package view
 import (
 	"fmt"
 
-
 	"github.com/davcrypto/chain-indexing-app-example/internal/json"
 
 	"github.com/crypto-com/chain-indexing/usecase/coin"
