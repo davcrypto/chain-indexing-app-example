@@ -12,7 +12,7 @@ import (
 )
 
 type Examples interface {
-	Upsert(*ExampleRow) error
+	Insert(*ExampleRow) error
 }
 
 type ExamplesView struct {
@@ -25,7 +25,7 @@ func NewExamplesView(handle *rdb.Handle) Examples {
 	}
 }
 
-func (exampleView *ExamplesView) Upsert(example *ExampleRow) error {
+func (exampleView *ExamplesView) Insert(example *ExampleRow) error {
 	sql, sqlArgs, err := exampleView.rdb.StmtBuilder.
 		Insert(
 			"view_examples",
@@ -38,7 +38,6 @@ func (exampleView *ExamplesView) Upsert(example *ExampleRow) error {
 			example.Address,
 			json.MustMarshalToString(example.Balance),
 		).
-		Suffix("ON CONFLICT(address) DO UPDATE SET balance = EXCLUDED.balance").
 		ToSql()
 
 	if err != nil {

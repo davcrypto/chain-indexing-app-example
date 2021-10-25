@@ -57,7 +57,7 @@ docker run -it \
     --env DB_PORT=5432 \
     --env DB_NAME=postgres \
     --env DB_SCHEMA=public \
-    chain-indexing /app/migrate -- -verbose up
+    chain-indexing-app /app/migrate -- -verbose up
 ```
 
 #### Manual Build
@@ -81,7 +81,7 @@ docker run \
     -v `pwd`/config:/app/config --read-only \
     -p 28857:28857 \
     --env DB_PASSWORD=your_postgresql_password \
-    chain-indexing /app/chain-indexing
+    chain-indexing-app /app/chain-indexing-app
 ```
 
 #### Manual build

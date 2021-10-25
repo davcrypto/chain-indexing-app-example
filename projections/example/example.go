@@ -2,6 +2,7 @@ package example
 
 import (
 	"fmt"
+	"log"
 
 	applogger "github.com/crypto-com/chain-indexing/external/logger"
 	example_view "github.com/davcrypto/chain-indexing-app-example/projections/example/view"
@@ -24,7 +25,7 @@ func NewAdditionalProjection(
 	rdbConn rdb.Conn,
 ) *AdditionalExampleProjection {
 	return &AdditionalExampleProjection{
-		rdbprojectionbase.NewRDbBase(rdbConn.ToHandle(), "Account"),
+		rdbprojectionbase.NewRDbBase(rdbConn.ToHandle(), "Example"),
 		rdbConn,
 		logger,
 	}
@@ -36,9 +37,7 @@ var (
 )
 
 func (_ *AdditionalExampleProjection) GetEventsToListen() []string {
-	return []string{
-		event_usecase.ACCOUNT_TRANSFERRED,
-	}
+	return event_usecase.MSG_EVENTS
 }
 
 func (projection *AdditionalExampleProjection) OnInit() error {
@@ -63,6 +62,7 @@ func (projection *AdditionalExampleProjection) HandleEvents(height int64, events
 	examplesView := NewExamplesView(rdbTxHandle)
 
 	for _, event := range events {
+		log.Println(event)
 		if typedEvent, ok := event.(*event_usecase.MsgSend); ok {
 			row := &example_view.ExampleRow{
 				Address: typedEvent.ToAddress,
@@ -87,8 +87,5 @@ func (projection *AdditionalExampleProjection) HandleEvents(height int64, events
 }
 
 func (projection *AdditionalExampleProjection) handleSomeEvent(examplesView example_view.Examples, row *example_view.ExampleRow) error {
-
-	examplesView.Upsert(row)
-
-	return nil
+	return examplesView.Insert(row)
 }

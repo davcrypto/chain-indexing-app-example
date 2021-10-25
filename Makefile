@@ -1,9 +1,7 @@
-all: build install-migrate install
+all: build install-migrate
 build: chain-indexing-app
 chain-indexing-app:
 	go build ./app/chain-indexing-app/
-install:
-	go install ./cmd/chain-indexing/
 install-migrate:
 	./pgmigrate.sh --install-dependency -- version
 migrate:
