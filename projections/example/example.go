@@ -4,8 +4,7 @@ import (
 	"fmt"
 
 	applogger "github.com/crypto-com/chain-indexing/external/logger"
-
-	//example_view "github.com/davcrypto/chain-indexing-app-example/projections/example/view"
+	example_view "github.com/davcrypto/chain-indexing-app-example/projections/example/view"
 
 	"github.com/crypto-com/chain-indexing/appinterface/projection/rdbprojectionbase"
 	"github.com/crypto-com/chain-indexing/appinterface/rdb"
@@ -32,7 +31,7 @@ func NewAdditionalProjection(
 }
 
 var (
-	NewAccountsView              = example_view.NewExamplesView
+	NewExamplesView              = example_view.NewExamplesView
 	UpdateLastHandledEventHeight = (*AdditionalExampleProjection).UpdateLastHandledEventHeight
 )
 
@@ -61,12 +60,16 @@ func (projection *AdditionalExampleProjection) HandleEvents(height int64, events
 
 	rdbTxHandle := rdbTx.ToHandle()
 
-	accountsView := NewAccountsView(rdbTxHandle)
+	examplesView := NewExamplesView(rdbTxHandle)
 
 	for _, event := range events {
-		if accountCreatedEvent, ok := event.(*event_usecase.AccountTransferred); ok {
-			if handleErr := projection.handleSomeEvent(accountsView, accountCreatedEvent); handleErr != nil {
-				return fmt.Errorf("error handling AccountCreatedEvent: %v", handleErr)
+		if typedEvent, ok := event.(*event_usecase.MsgSend); ok {
+			row := &example_view.ExampleRow{
+				Address: typedEvent.ToAddress,
+				Balance: typedEvent.Amount,
+			}
+			if handleErr := projection.handleSomeEvent(examplesView, row); handleErr != nil {
+				return fmt.Errorf("error handling MsgSend: %v", handleErr)
 			}
 		}
 	}
@@ -83,17 +86,9 @@ func (projection *AdditionalExampleProjection) HandleEvents(height int64, events
 	return nil
 }
 
-func (projection *AdditionalExampleProjection) handleSomeEvent(accountsView account_view.Accounts, event *event_usecase.AccountTransferred) error {
+func (projection *AdditionalExampleProjection) handleSomeEvent(examplesView example_view.Examples, row *example_view.ExampleRow) error {
 
-	recipienterr := projection.writeAccountInfo(accountsView, event.Recipient)
-	if recipienterr != nil {
-		return recipienterr
-	}
-
-	sendererr := projection.writeAccountInfo(accountsView, event.Sender)
-	if sendererr != nil {
-		return sendererr
-	}
+	examplesView.Upsert(row)
 
 	return nil
 }

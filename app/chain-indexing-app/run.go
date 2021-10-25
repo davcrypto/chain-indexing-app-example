@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"indexer/internal/filereader/toml"
+	"github.com/davcrypto/chain-indexing-app-example/internal/filereader/toml"
 
 	"github.com/crypto-com/chain-indexing/bootstrap"
 	"github.com/urfave/cli/v2"

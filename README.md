@@ -87,5 +87,5 @@ docker run \
 #### Manual build
 
 ```bash
-env DB_PASSWORD=your_postgresql_password ./chain-indexing
+env DB_PASSWORD=your_postgresql_password ./chain-indexing-app
 ```

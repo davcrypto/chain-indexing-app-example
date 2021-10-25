@@ -20,6 +20,7 @@ import (
 	"github.com/crypto-com/chain-indexing/projection/transaction"
 	"github.com/crypto-com/chain-indexing/projection/validator"
 	"github.com/crypto-com/chain-indexing/projection/validatorstats"
+	"github.com/davcrypto/chain-indexing-app-example/projections/example"
 
 	"github.com/crypto-com/chain-indexing/appinterface/rdb"
 	projection_entity "github.com/crypto-com/chain-indexing/entity/projection"
@@ -65,6 +66,8 @@ func initProjections(
 		}
 		projections = append(projections, projection)
 	}
+
+	projections = append(projections, example.NewAdditionalProjection(logger, rdbConn))
 
 	logger.Infof("Enabled the follow projections: [%s]", strings.Join(config.Projection.Enables, ", "))
 

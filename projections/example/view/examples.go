@@ -32,20 +32,10 @@ func (exampleView *ExamplesView) Upsert(example *ExampleRow) error {
 		).
 		Columns(
 			"address",
-			"account_type",
-			"name",
-			"pubkey",
-			"account_number",
-			"sequence_number",
 			"balance",
 		).
 		Values(
 			example.Address,
-			example.Type,
-			example.MaybeName,
-			example.MaybePubkey,
-			example.AccountNumber,
-			example.SequenceNumber,
 			json.MustMarshalToString(example.Balance),
 		).
 		Suffix("ON CONFLICT(address) DO UPDATE SET balance = EXCLUDED.balance").
@@ -67,11 +57,6 @@ func (exampleView *ExamplesView) Upsert(example *ExampleRow) error {
 }
 
 type ExampleRow struct {
-	Address        string     `json:"address"`
-	Type           string     `json:"type"`
-	MaybeName      *string    `json:"name"`
-	MaybePubkey    *string    `json:"pubkey"`
-	AccountNumber  string     `json:"accountNumber"`
-	SequenceNumber string     `json:"sequenceNumber"`
-	Balance        coin.Coins `json:"balance"`
+	Address string     `json:"address"`
+	Balance coin.Coins `json:"balance"`
 }
