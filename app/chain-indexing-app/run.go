@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/davcrypto/chain-indexing-app-example/app/chain-indexing-app/routes"
 	"github.com/davcrypto/chain-indexing-app-example/internal/filereader/toml"
 
 	"github.com/crypto-com/chain-indexing/bootstrap"
@@ -149,7 +150,7 @@ func run(args []string) error {
 				initProjections(logger, app.GetRDbConn(), &config),
 				initCronJobs(logger, app.GetRDbConn(), &config),
 			)
-			app.InitHTTPAPIServer(initHTTPAPIHandlers(logger, app.GetRDbConn(), &config))
+			app.InitHTTPAPIServer(routes.InitRouteRegistry(logger, app.GetRDbConn(), &config))
 
 			app.Run()
 
