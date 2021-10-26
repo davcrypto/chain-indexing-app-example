@@ -314,8 +314,8 @@ github.com/cpuguy83/go-md2man/v2 v2.0.0 h1:EoUDS0afbrsXAZ9YQ9jdu/mZ2sXgT1/2yyNng
 github.com/cpuguy83/go-md2man/v2 v2.0.0/go.mod h1:maD7wRr/U5Z6m/iR4s+kqSMx2CaBsrgA7czyZG/E6dU=
 github.com/creack/pty v1.1.7/go.mod h1:lj5s0c3V2DBrqTV7llrYr5NG6My20zk30Fl46Y7DoTY=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
-github.com/crypto-com/chain-indexing v0.0.0-20211022091910-85b24726322b h1:oSdcA4GJIOJefO/YsL3dTGBqN07RyKTpBuL6/KCInZs=
-github.com/crypto-com/chain-indexing v0.0.0-20211022091910-85b24726322b/go.mod h1:YO/5JkWr78qHQ+6FF+4EeS2e5sQPSxWqDYw1MHKftz0=
+github.com/crypto-com/chain-indexing v0.0.0-20211026053133-888a5cc05961 h1:rd/xtnstPKfNF9zY+ZseDN2N/pEWa1F9rr+bvdf9CME=
+github.com/crypto-com/chain-indexing v0.0.0-20211026053133-888a5cc05961/go.mod h1:YO/5JkWr78qHQ+6FF+4EeS2e5sQPSxWqDYw1MHKftz0=
 github.com/crypto-org-chain/chain-main/v3 v3.0.0-croeseid h1:YAffq+tYiSqYXgIb11Vc6dvBtgSvRsf2g1wPaMFkQUA=
 github.com/crypto-org-chain/chain-main/v3 v3.0.0-croeseid/go.mod h1:92Z70bDbsScrWzIHB496p7nXKydtq5am9rqa0fCpbM8=
 github.com/crypto-org-chain/cronos v0.6.0-testnet h1:iFLwra4QMZ6HgIEB1P0vMCa9pnQTeXjwSuYbH4glxqA=

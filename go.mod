@@ -6,14 +6,11 @@ replace github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.2-alp
 
 replace github.com/rs/zerolog => github.com/rs/zerolog v1.23.0
 
-replace github.com/crypto-com/chain-indexing => github.com/crypto-com/chain-indexing v0.0.0-20211022091910-85b24726322b
+replace github.com/crypto-com/chain-indexing => github.com/crypto-com/chain-indexing v0.0.0-20211026053133-888a5cc05961
 
 require (
 	github.com/BurntSushi/toml v0.4.1
 	github.com/crypto-com/chain-indexing v0.0.0-00010101000000-000000000000
-	github.com/json-iterator/go v1.1.11
-	github.com/onsi/ginkgo v1.16.4
-	github.com/onsi/gomega v1.13.0
 	github.com/urfave/cli/v2 v2.3.0
 )
 
@@ -97,6 +94,7 @@ require (
 	github.com/jackc/pgx/v4 v4.8.1 // indirect
 	github.com/jackc/puddle v1.1.1 // indirect
 	github.com/jmhodges/levigo v1.0.0 // indirect
+	github.com/json-iterator/go v1.1.11 // indirect
 	github.com/keybase/go-keychain v0.0.0-20190712205309-48d3d31d256d // indirect
 	github.com/klauspost/compress v1.11.9 // indirect
 	github.com/lab259/cors v0.2.0 // indirect
@@ -115,7 +113,6 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.1 // indirect
 	github.com/mtibben/percent v0.2.1 // indirect
-	github.com/nxadm/tail v1.4.8 // indirect
 	github.com/olekukonko/tablewriter v0.0.5 // indirect
 	github.com/peggyjv/gravity-bridge/module v0.2.17 // indirect
 	github.com/pelletier/go-toml v1.9.4 // indirect
@@ -170,7 +167,6 @@ require (
 	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/ini.v1 v1.63.2 // indirect
 	gopkg.in/natefinch/npipe.v2 v2.0.0-20160621034901-c1b8fa8bdcce // indirect
-	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 )
